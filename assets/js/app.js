@@ -4,19 +4,18 @@ const { createApp } = Vue
     data() {
       return {
         random_mail_url: 'https://flynn.boolean.careers/exercises/api/random/mail',
-        my_data: null,
         random_mail: [],
+        emails_to_generate: 10,
 
       }
     },
     mounted(){
        
-            for (let index = 0; index < 10; index++) {
+            for (let index = 0; index < this.emails_to_generate; index++) {
                 axios
                 .get(this.random_mail_url)
                 .then(response => {
                 console.log(response.data.response);
-                this.my_data = response.data
                 this.random_mail.push(response.data.response)
             });
                 
